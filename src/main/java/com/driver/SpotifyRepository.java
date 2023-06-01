@@ -159,7 +159,7 @@ public class SpotifyRepository {
 
         List<User> listiner = playlistListenerMap.get(playlist);
         for (User listiner_user : listiner) {
-            if (listiner_user == user)
+            if (listiner_user.getName().equals(user.getName()))
                 return playlist;
         }
 
@@ -167,8 +167,8 @@ public class SpotifyRepository {
         playlistListenerMap.put(playlist, listiner);
 
         List<Playlist> allPlaylists = userPlaylistMap.getOrDefault(user, new ArrayList<>());
-        if (allPlaylists.contains(playlist))
-            return playlist;
+        allPlaylists.add(playlist);
+        userPlaylistMap.put(user, allPlaylists);
 
         allPlaylists.add(playlist);
 
