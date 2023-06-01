@@ -54,7 +54,7 @@ public class SpotifyRepository {
 
         Artist artist = getArtist(artistName);
         if (artist == null)
-            createArtist(artistName);
+            artist = createArtist(artistName);
 
         Album album = new Album(title);
         album.setReleaseDate(new Date());
