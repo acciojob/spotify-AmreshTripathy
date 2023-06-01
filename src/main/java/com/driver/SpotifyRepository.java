@@ -173,8 +173,6 @@ public class SpotifyRepository {
         allPlaylists.add(playlist);
         userPlaylistMap.put(user, allPlaylists);
 
-        allPlaylists.add(playlist);
-
         return playlist;
     }
 
