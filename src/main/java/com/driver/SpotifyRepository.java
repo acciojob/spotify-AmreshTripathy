@@ -45,6 +45,7 @@ public class SpotifyRepository {
 
     public Artist createArtist(String name) {
         Artist artist = new Artist(name);
+        artist.setLikes(0);
         artists.add(artist);
         return artist;
     }
@@ -56,6 +57,7 @@ public class SpotifyRepository {
             createArtist(artistName);
 
         Album album = new Album(title);
+        album.setReleaseDate(new Date());
         albums.add(album);
 
         List<Album> albumList = artistAlbumMap.getOrDefault(artist, new ArrayList<>());
@@ -68,10 +70,11 @@ public class SpotifyRepository {
 
     public Song createSong(String title, String albumName, int length) throws Exception {
         Album album = getAlbum(albumName);
-        if (!albums.contains(new Album((albumName))))
+        if (album == null)
             throw new Exception("Album does not exist");
 
         Song song = new Song(title, length);
+        song.setLikes(0);
         songs.add(song);
 
         List<Song> songLists = albumSongMap.getOrDefault(album, new ArrayList<>());
